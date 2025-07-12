@@ -1,11 +1,13 @@
 package com.example.backend.repository;
 
 import com.example.backend.model.Dado;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class DadoRepositorio {
 
     private static final List<Dado> lista = new ArrayList<>();
