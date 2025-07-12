@@ -34,8 +34,4 @@ public class DadosController {
     public void remover(@PathVariable String id){
         repositorio.removerPorId(id);
     }
-
-
-
-
 }
