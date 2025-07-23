@@ -5,31 +5,32 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public class DadoRepositorio {
 
-    private static final List<Dado> lista = new ArrayList<>();
+    private final List<Dado> dados = new ArrayList<>();
 
-    static {
-        lista.add(new Dado("1", "Item 1"));
-        lista.add(new Dado("2", "Item 2"));
-    }
-
-    public List<Dado> listarTodos(){
-        return lista;
+    public List<Dado> listar(){
+        return dados;
     }
 
     public void adicionar(Dado dado){
-        lista.add(dado);
+        dados.add(dado);
     }
 
     public boolean removerPorId(String id){
-        return lista.removeIf(d -> d.getId().equals(id));
+        return dados.removeIf(d -> d.getId().equals(id));
     }
 
-    public Optional<Dado> buscarPorId(String id){
-        return lista.stream().filter(d -> d.getId().equals(id)).findFirst();
+    public void atualizar(Dado novoDado){
+        for(int i = 0; i < dados.size(); i++){
+            if(dados.get(i).getId().equals(novoDado.getId())){
+                dados.set(i, novoDado);
+                return;
+            }
+        }
     }
+
 }
