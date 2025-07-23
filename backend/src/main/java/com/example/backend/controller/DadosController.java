@@ -4,10 +4,8 @@ import com.example.backend.model.Dado;
 import com.example.backend.repository.DadoRepositorio;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api/dados")
@@ -22,12 +20,17 @@ public class DadosController {
 
     @GetMapping
     public List<Dado> listar(){
-        return repositorio.listarTodos();
+        return repositorio.listar();
     }
 
     @PostMapping
     public void adicionar(@RequestBody Dado dado){
         repositorio.adicionar(dado);
+    }
+
+    @PutMapping
+    public void atualizar(@RequestBody Dado dado){
+        repositorio.atualizar(dado);
     }
 
     @DeleteMapping("/{id}")
